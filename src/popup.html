@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>IdP Detector</title>
+<style>
+  :root { color-scheme: light dark; --bg:#fff; --fg:#1b1f24; --mut:#667; --bar:#e6e8ec; --acc:#2563eb; --hi:#15803d; --med:#b45309; --lo:#6b7280; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#16181d; --fg:#e8eaed; --mut:#9aa0a6; --bar:#2a2e36; --acc:#60a5fa; --hi:#4ade80; --med:#fbbf24; --lo:#9ca3af; } }
+  body { width: 400px; margin: 0; padding: 12px 14px; background: var(--bg); color: var(--fg); font: 13px/1.4 system-ui, sans-serif; }
+  h1 { font-size: 14px; margin: 0 0 2px; } .sub { color: var(--mut); font-size: 11px; margin-bottom: 10px; }
+  .vendor { margin: 10px 0 4px; } .row { display:flex; justify-content:space-between; align-items:baseline; gap:8px; }
+  .name { font-weight: 600; } .pct { font-variant-numeric: tabular-nums; }
+  .bar { height: 6px; background: var(--bar); border-radius: 3px; overflow: hidden; margin: 3px 0; }
+  .bar > i { display:block; height:100%; background: var(--acc); }
+  .high { color: var(--hi); } .medium { color: var(--med); } .low { color: var(--lo); }
+  details { margin: 2px 0 6px; font-size: 12px; } summary { cursor: pointer; color: var(--mut); }
+  ul { margin: 4px 0 0; padding-left: 16px; } li { margin: 2px 0; } code { font: 11px ui-monospace, monospace; color: var(--mut); word-break: break-all; }
+  .proto, .probes { color: var(--mut); font-size: 12px; margin: 8px 0; }
+  .btns { display:flex; gap:6px; margin-top: 10px; } button { flex:1; padding: 5px 6px; font: inherit; cursor: pointer; border: 1px solid var(--bar); background: transparent; color: var(--fg); border-radius: 5px; }
+  button:hover { border-color: var(--acc); } .empty { color: var(--mut); padding: 14px 0; }
+</style>
+</head>
+<body>
+  <h1>IdP Detector</h1>
+  <div class="sub" id="sub">Reading this tab…</div>
+  <div id="out"></div>
+  <div class="proto" id="proto"></div>
+  <div class="probes" id="probes"></div>
+  <div class="btns">
+    <button id="probe" title="GETs /.well-known/openid-configuration from hosts this tab already talked to">Probe discovery</button>
+    <button id="copy">Copy JSON</button>
+    <button id="clear">Clear</button>
+  </div>
+  <script type="module" src="popup.js"></script>
+</body>
+</html>
